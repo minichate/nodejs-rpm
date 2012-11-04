@@ -1,7 +1,7 @@
 %define   _base node
 
 Name:          %{_base}js
-Version:       0.8.11
+Version:       0.8.14
 Release:       1%{?dist}
 Summary:       Node.js is a server-side JavaScript environment that uses an asynchronous event-driven model.
 Packager:      Kazuhisa Hara <kazuhisya@gmail.com>
@@ -12,9 +12,9 @@ Source0:       %{url}/dist/v%{version}/%{_base}-v%{version}.tar.gz
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-tmp
 Obsoletes:     npm
 Provides:      npm
+BuildRequires: tar
 BuildRequires: gcc
 BuildRequires: gcc-c++
-BuildRequires: git
 BuildRequires: make
 BuildRequires: openssl-devel
 BuildRequires: libstdc++-devel
@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_prefix}/lib/node/wafadmin/Tools
 %{_prefix}/lib/node/wafadmin/*
 %{_prefix}/lib/node_modules/npm
-%dir %{_prefix}/share/doc/%{_base}-v%{version}/*
+%{_prefix}/share/doc/%{_base}-v%{version}/*
 %dir %{_prefix}/lib/dtrace/node.d
 
 %doc
@@ -102,6 +102,15 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Oct 28 2012 Kazuhisa Hara <kazuhisya@gmail.com>
+- Updated to node.js version 0.8.14 by @Pitel
+* Thu Oct 18 2012 Kazuhisa Hara <kazuhisya@gmail.com>
+- Fixed issues #9, Unneeded dependency on git
+* Wed Oct 17 2012 Kazuhisa Hara <kazuhisya@gmail.com>
+- Fixed missing spaces for Fedora 18 (syntax error)
+- Added BuildRequires: tar
+* Mon Oct 15 2012 Kazuhisa Hara <kazuhisya@gmail.com>
+- Updated to node.js version 0.8.12 by @brandonramirez
 * Sat Sep 29 2012 Kazuhisa Hara <kazuhisya@gmail.com>
 - Updated to node.js version 0.8.11
 - Making Source0 "spectool friendly" by @elus
